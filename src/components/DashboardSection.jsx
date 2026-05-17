@@ -483,7 +483,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                 <span className="text-xs font-mono text-zinc-500">Página 1 de 1</span>
                 <div className="flex gap-3">
                   <button onClick={() => setShowPdfMockup(false)} className="px-6 py-2 bg-zinc-100 text-zinc-700 text-xs font-semibold rounded hover:bg-zinc-200 transition-colors">Cancelar</button>
-                  <button className="px-6 py-2 bg-black text-white text-xs font-semibold rounded shadow-lg hover:bg-zinc-800 transition-colors flex items-center gap-2">
+                  <button onClick={() => window.print()} className="px-6 py-2 bg-black text-white text-xs font-semibold rounded shadow-lg hover:bg-zinc-800 transition-colors flex items-center gap-2">
                     <Download className="w-3.5 h-3.5" /> Baixar PDF Original
                   </button>
                 </div>

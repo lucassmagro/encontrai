@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function UploadSection({ onUpload }) {
   const [dragActive, setDragActive] = useState(false);
-  const [consentGiven, setConsentGiven] = useState(false);
   const [error, setError] = useState('');
   const [cameraActive, setCameraActive] = useState(false);
+  const [pendingImage, setPendingImage] = useState(null);
+  const [pendingIsCamera, setPendingIsCamera] = useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
   const inputRef = useRef(null);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
@@ -42,27 +44,16 @@ export default function UploadSection({ onUpload }) {
   };
   
   const handleFile = (file) => {
-    if (!consentGiven) {
-      setError('A autorização legal para processamento temporário é obrigatória.');
-      return;
-    }
     const imageUrl = URL.createObjectURL(file);
-    onUpload(imageUrl, false);
+    setPendingImage(imageUrl);
+    setPendingIsCamera(false);
   };
 
   const onButtonClick = () => {
-    if (!consentGiven) {
-      setError('A autorização legal para processamento temporário é obrigatória.');
-      return;
-    }
     inputRef.current?.click();
   };
 
   const startCamera = async () => {
-    if (!consentGiven) {
-      setError('A autorização legal para processamento temporário é obrigatória.');
-      return;
-    }
     
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       setError('Câmera não suportada neste navegador (requer HTTPS ou localhost).');
@@ -106,7 +97,8 @@ export default function UploadSection({ onUpload }) {
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const dataUrl = canvas.toDataURL('image/jpeg');
       stopCamera();
-      onUpload(dataUrl, true);
+      setPendingImage(dataUrl);
+      setPendingIsCamera(true);
     }
   };
 
@@ -126,7 +118,75 @@ export default function UploadSection({ onUpload }) {
         {/* Upload Card */}
         <div className="glass-panel-deep p-8 md:p-12 rounded-3xl relative overflow-hidden">
           
-          {cameraActive ? (
+          {pendingImage ? (
+            <div className="flex flex-col items-center w-full">
+              <div className="relative w-48 h-48 rounded-xl overflow-hidden border border-white/10 mb-8 shadow-2xl">
+                <img src={pendingImage} alt="Matriz capturada" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-2 left-2 flex items-center gap-2">
+                   <Shield className="w-4 h-4 text-cyan-400" />
+                   <span className="text-[10px] font-mono uppercase text-white tracking-widest">Aguardando Autorização</span>
+                </div>
+              </div>
+
+              <div className="w-full text-left mb-8 border-t border-white/[0.03] pt-6">
+                <div className="flex items-start gap-4 p-5 rounded-xl bg-cyan-950/10 border border-cyan-900/20 mb-6">
+                  <Shield className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-[13px] font-semibold text-cyan-100 tracking-tight">Privacidade Forense Garantida</h4>
+                    <p className="text-[11px] text-cyan-200/60 mt-1.5 leading-relaxed font-light">
+                      A extração dos vetores é realizada em memória volátil (RAM). Não armazenamos a imagem base em nenhum disco persistente.
+                    </p>
+                  </div>
+                </div>
+
+                <label className="flex items-start gap-4 cursor-pointer group">
+                  <div className="relative flex items-center justify-center mt-1">
+                    <input 
+                      type="checkbox" 
+                      className="peer sr-only"
+                      checked={consentGiven}
+                      onChange={(e) => {
+                        setConsentGiven(e.target.checked);
+                        if (e.target.checked) setError('');
+                      }}
+                    />
+                    <div className="w-5 h-5 border border-zinc-600 rounded peer-checked:bg-cyan-500 peer-checked:border-cyan-500 transition-colors group-hover:border-zinc-400 flex items-center justify-center bg-black/20">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
+                    </div>
+                  </div>
+                  <span className="text-xs text-zinc-400 group-hover:text-zinc-300 transition-colors leading-relaxed select-none font-light">
+                    Declaro ser o titular desta imagem e autorizo expressamente o processamento volátil para fins exclusivos de busca ativa e instrução probatória.
+                  </span>
+                </label>
+              </div>
+
+              <div className="flex gap-4 w-full">
+                <button 
+                  onClick={() => {
+                    setPendingImage(null);
+                    setConsentGiven(false);
+                    setError('');
+                  }} 
+                  className="flex-1 py-3 bg-white/5 text-white font-medium rounded-xl hover:bg-white/10 transition-colors text-sm border border-white/10"
+                >
+                  Cancelar
+                </button>
+                <button 
+                  onClick={() => {
+                    if (!consentGiven) {
+                      setError('A autorização legal para processamento temporário é obrigatória.');
+                      return;
+                    }
+                    onUpload(pendingImage, pendingIsCamera);
+                  }} 
+                  className="flex-1 py-3 bg-cyan-500 text-black font-semibold rounded-xl hover:bg-cyan-400 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.4)] text-sm flex items-center justify-center gap-2"
+                >
+                  Confirmar e Processar
+                </button>
+              </div>
+            </div>
+          ) : cameraActive ? (
             <div className="relative rounded-2xl border border-cyan-500/30 bg-black overflow-hidden flex flex-col items-center justify-center min-h-[320px]">
               <video ref={videoRef} autoPlay playsInline className="absolute inset-0 w-full h-full object-cover scale-x-[-1]" />
               {/* Overlays to make it look forensic */}
@@ -198,38 +258,6 @@ export default function UploadSection({ onUpload }) {
             </div>
           )}
 
-          {/* Privacy & Legal Consent */}
-          <div className="mt-8 pt-6 border-t border-white/[0.03]">
-            <div className="flex items-start gap-4 p-5 rounded-xl bg-cyan-950/10 border border-cyan-900/20 mb-6">
-              <Shield className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-[13px] font-semibold text-cyan-100 tracking-tight">Privacidade Forense Garantida</h4>
-                <p className="text-[11px] text-cyan-200/60 mt-1.5 leading-relaxed font-light">
-                  A extração dos vetores é realizada em memória volátil (RAM). Não armazenamos a imagem base em nenhum disco persistente.
-                </p>
-              </div>
-            </div>
-
-            <label className="flex items-start gap-4 cursor-pointer group">
-              <div className="relative flex items-center justify-center mt-1">
-                <input 
-                  type="checkbox" 
-                  className="peer sr-only"
-                  checked={consentGiven}
-                  onChange={(e) => {
-                    setConsentGiven(e.target.checked);
-                    if (e.target.checked) setError('');
-                  }}
-                />
-                <div className="w-5 h-5 border border-zinc-600 rounded peer-checked:bg-cyan-500 peer-checked:border-cyan-500 transition-colors group-hover:border-zinc-400 flex items-center justify-center bg-black/20">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
-                </div>
-              </div>
-              <span className="text-xs text-zinc-400 group-hover:text-zinc-300 transition-colors leading-relaxed select-none font-light">
-                Declaro ser o titular desta imagem e autorizo expressamente o processamento volátil para fins exclusivos de busca ativa e instrução probatória.
-              </span>
-            </label>
-
             <AnimatePresence>
               {error && (
                 <motion.div initial={{ opacity: 0, height: 0, marginTop: 0 }} animate={{ opacity: 1, height: 'auto', marginTop: 16 }} exit={{ opacity: 0, height: 0, marginTop: 0 }} className="flex items-center gap-2 text-rose-400 text-xs overflow-hidden">
@@ -238,7 +266,6 @@ export default function UploadSection({ onUpload }) {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
         </div>
       </motion.div>
     </div>

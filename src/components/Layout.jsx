@@ -34,12 +34,12 @@ export default function Layout({ children }) {
       {/* Header */}
       <header className="w-full border-b border-white/[0.02] bg-black/10 backdrop-blur-xl z-40 relative sticky top-0">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-black border border-white/20 flex items-center justify-center shadow-[0_0_24px_rgba(255,255,255,0.05)] transition-transform duration-500 group-hover:scale-105">
               <FaceShieldLogo className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl tracking-tighter text-zinc-300">Encontr<span className="font-bold text-white tracking-normal">AI</span></span>
-          </Link>
+          </a>
           
           <nav className="hidden md:flex items-center gap-8">
             <Link to="/plataforma" className="text-[13px] font-medium text-zinc-400 hover:text-white transition-colors">Plataforma</Link>
