@@ -3,24 +3,15 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
 const FaceShieldLogo = ({ className }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    {/* Contorno de rosto estilizado (cyborg/forensic feel) */}
-    <path d="M6 10c0-4.5 2.5-8 6-8s6 3.5 6 8c0 3-1.5 5.5-3 7v2c0 1-1 2-3 2s-3-1-3-2v-2c-1.5-1.5-3-4-3-7z" />
-    
-    {/* Escudo interno com xadrez */}
-    <g clipPath="url(#shield-clip)">
-      <rect x="7" y="9" width="5" height="5" fill="currentColor" stroke="none" />
-      <rect x="12" y="14" width="5" height="5" fill="currentColor" stroke="none" />
-    </g>
-    
-    {/* Contorno do escudo */}
-    <path d="M12 9l-3 1.5v3c0 2 1.5 3.5 3 5c1.5-1.5 3-3 3-5v-3L12 9z" />
-    
-    <defs>
-      <clipPath id="shield-clip">
-        <path d="M12 9l-3 1.5v3c0 2 1.5 3.5 3 5c1.5-1.5 3-3 3-5v-3L12 9z" />
-      </clipPath>
-    </defs>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M9 8H8v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M15 8h1v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M9 16H8v-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M15 16h1v-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M10 11v.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14 11v.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M10 14c1.33 1 2.67 1 4 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
