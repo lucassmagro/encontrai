@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Platform from './pages/Platform';
-import Legal from './pages/Legal';
 import Privacy from './pages/Privacy';
 import Planos from './pages/Planos';
 
@@ -22,7 +21,6 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Signup />} />
           <Route path="/plataforma" element={<Platform />} />
-          <Route path="/juridico" element={<Legal />} />
           <Route path="/privacidade" element={<Privacy />} />
           <Route path="/planos" element={<Planos />} />
           

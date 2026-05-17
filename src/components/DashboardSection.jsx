@@ -43,12 +43,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto px-6 py-12 relative min-h-[80vh] flex flex-col justify-center">
       
-      {/* Dev Toggle */}
-      <div className="absolute top-4 right-6 flex gap-2 z-50">
-         <button onClick={() => setShowSafeState(!showSafeState)} className="text-[9px] uppercase font-mono px-2 py-1 bg-white/5 border border-white/10 rounded hover:bg-white/10 text-zinc-500 transition-colors">
-            Toggle Mode: {showSafeState ? 'SAFE' : 'THREAT'}
-         </button>
-      </div>
+
 
       <AnimatePresence>
         {!revealed && (
@@ -160,76 +155,17 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {/* Item 1 */}
-                  <div 
-                    onClick={() => toggleExpand(1)}
-                    className="glass-panel p-4 rounded-xl border border-white/[0.03] flex flex-col transition-colors cursor-pointer group hover:border-white/10"
-                  >
-                    <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
-                      <div className="relative w-24 h-24 rounded bg-zinc-900 overflow-hidden shrink-0 border border-white/5">
-                        <div 
-                          className="absolute inset-0 bg-cover bg-center blur-md opacity-60 group-hover:blur-sm transition-all duration-500" 
-                          style={{ backgroundImage: `url(${uploadedImage || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop'})` }}
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center"><EyeOff className="w-5 h-5 text-white/40" /></div>
-                      </div>
-                      <div className="flex-1 min-w-0 w-full">
-                        <div className="flex justify-between items-start mb-1">
-                          <h4 className="text-base font-semibold text-white truncate">Artefato de Vídeo Generativo</h4>
-                          <span className="px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-400 text-[9px] font-mono uppercase border border-rose-500/20 shrink-0">Deepfake</span>
-                        </div>
-                        <div className="text-[11px] font-mono text-zinc-500 mb-3 grid grid-cols-2 gap-y-1">
-                          <div>ORIGEM: Rede X (Twitter)</div>
-                          <div>SIMILARIDADE: {sim1}%</div>
-                          <div>HASH_ID: A9F2...C410</div>
-                          <div>ALGORITMO IA: 99.9% (SimSwap)</div>
-                        </div>
-                      </div>
-                      <div className="sm:pl-4 sm:border-l border-white/5 flex items-center justify-center">
-                        {expandedItem === 1 ? <ChevronUp className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" /> : <ChevronDown className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />}
-                      </div>
-                    </div>
-
-                    <AnimatePresence>
-                      {expandedItem === 1 && (
-                        <motion.div 
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-4 mt-4 border-t border-white/[0.04] grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-3 bg-black/20 rounded border border-white/[0.02]">
-                              <h5 className="text-[10px] text-zinc-500 font-mono mb-2 flex items-center gap-2"><AlertCircle className="w-3 h-3 text-rose-400"/> ANÁLISE DE ADULTERAÇÃO</h5>
-                              <p className="text-xs text-zinc-300 leading-relaxed">Sincronização labial forçada detectada na faixa de frames 00:12 a 00:28. A análise de ruído digital indica injeção de GAN (Generative Adversarial Network) focada na metade inferior da face.</p>
-                            </div>
-                            <div className="p-3 bg-black/20 rounded border border-white/[0.02] flex flex-col justify-between">
-                              <div>
-                                <h5 className="text-[10px] text-zinc-500 font-mono mb-2 flex items-center gap-2"><LinkIcon className="w-3 h-3 text-cyan-400"/> ORIGEM LOCALIZADA</h5>
-                                <p className="text-xs text-zinc-300 truncate">https://x.com/status/921831823... [Ocultado]</p>
-                              </div>
-                              <button className="mt-3 text-[10px] font-semibold bg-white/10 hover:bg-white/20 text-white py-1.5 px-3 rounded inline-flex items-center w-max gap-1 transition-colors">
-                                <FileSignature className="w-3 h-3" /> Gerar Notificação (Takedown)
-                              </button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
                   {/* Item 2 */}
                   <div 
                     onClick={() => toggleExpand(2)}
                     className="glass-panel p-4 rounded-xl border border-white/[0.03] flex flex-col transition-colors cursor-pointer group hover:border-white/10"
                   >
                     <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
-                      <div className="relative w-24 h-24 rounded bg-zinc-900 overflow-hidden shrink-0 border border-white/5">
+                      <div className="relative w-24 h-24 rounded bg-zinc-900 overflow-hidden shrink-0 border border-white/10 group-hover:border-cyan-500/30 transition-colors shadow-lg">
                         <div 
-                          className="absolute inset-0 bg-cover bg-center blur-md opacity-60 group-hover:blur-sm transition-all duration-500"
-                          style={{ backgroundImage: `url(${uploadedImage || 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop'})` }}
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" 
+                          style={{ backgroundImage: `url('/ai-threat.jpg')` }}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center"><EyeOff className="w-5 h-5 text-white/40" /></div>
                       </div>
                       <div className="flex-1 min-w-0 w-full">
                         <div className="flex justify-between items-start mb-1">
@@ -264,7 +200,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                             <div className="p-3 bg-black/20 rounded border border-white/[0.02] flex flex-col justify-between">
                               <div>
                                 <h5 className="text-[10px] text-zinc-500 font-mono mb-2 flex items-center gap-2"><LinkIcon className="w-3 h-3 text-cyan-400"/> ORIGEM LOCALIZADA</h5>
-                                <p className="text-xs text-zinc-300 truncate">https://forum... [Ocultado]</p>
+                                <p className="text-xs text-zinc-300 truncate">https://anonforum-leak.su/thread/db_leak/threads/view?id=482910</p>
                               </div>
                               <button className="mt-3 text-[10px] font-semibold bg-white/10 hover:bg-white/20 text-white py-1.5 px-3 rounded inline-flex items-center w-max gap-1 transition-colors">
                                 <FileSignature className="w-3 h-3" /> Gerar Notificação (Takedown)
@@ -285,22 +221,13 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
             
             {/* Export Card */}
             {!showSafeState && (
-              <div className="glass-panel-deep p-6 rounded-2xl border border-white/[0.05]">
-                <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <FileSignature className="w-4 h-4" />
-                  Custódia Legal
-                </h3>
-                <p className="text-xs text-zinc-500 mb-6 leading-relaxed">
-                  Este relatório é selado com assinatura criptográfica assimétrica. O PDF contém carimbo de tempo válido (Timestamp Authority) para instrução probatória em medidas extrajudiciais ou litígios judiciais.
-                </p>
-                <button 
-                  onClick={() => setShowPdfMockup(true)}
-                  className="w-full relative group inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-200 transition-all overflow-hidden"
-                >
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-                  Gerar Relatório PDF
-                </button>
-              </div>
+              <button 
+                onClick={() => setShowPdfMockup(true)}
+                className="w-full relative group inline-flex items-center justify-center gap-2 px-5 py-4 bg-white text-black text-sm font-semibold rounded-xl hover:bg-zinc-200 transition-all overflow-hidden shadow-xl shrink-0"
+              >
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                <FileSignature className="w-4 h-4" /> Gerar Relatório PDF
+              </button>
             )}
 
             {/* Privacy & System Integrity */}
@@ -326,7 +253,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
               </div>
             </div>
 
-            <div className="pt-6 mt-auto border-t border-white/[0.03]">
+            <div className="pt-2">
               <button onClick={onReset} className="w-full flex items-center justify-center gap-3 px-5 py-4 bg-rose-500/10 text-rose-500 font-semibold rounded-xl border border-rose-500/20 hover:bg-rose-500 hover:text-white transition-all duration-300">
                 <Trash2 className="w-4 h-4" />
                 Destruir Sessão e Fechar
@@ -406,13 +333,13 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                       O presente relatório documenta a constatação técnica e materialização de evidências digitais referentes à extração de características biométricas faciais. O escopo abrange a detecção automatizada de conteúdos sintéticos, adulterações mediante inteligência artificial (Deepfakes) e criações não autorizadas de perfis digitais em plataformas de terceiros. A cadeia de custódia foi preservada mediante criptografia assimétrica de ponta-a-ponta, operando estritamente em ambiente de memória volátil (RAM).
                     </p>
 
-                    <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 border-b border-zinc-200 pb-1">2. Cadeia de Custódia e Constatações Técnicas</h2>
+                    <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 border-b border-zinc-200 pb-1">2. Constatações Técnicas</h2>
                     <div className="space-y-4 mb-6">
                       
                       {/* Evidence Block */}
                       <div className="p-4 border border-zinc-300 bg-white shadow-sm">
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className="font-bold text-sm tracking-tight">Evidência Material #01 - Vídeo Manipulado (Deepfake)</h3>
+                          <h3 className="font-bold text-sm tracking-tight">Evidência Material #01 - Perfil Sintético Mimetizado</h3>
                           <span className="px-3 py-1 bg-black text-white text-[9px] uppercase tracking-widest font-bold">Violação Identificada</span>
                         </div>
                         
@@ -420,7 +347,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                           <div className="col-span-1">
                             <div className="w-full aspect-square bg-zinc-200 border border-zinc-300 relative">
                               <div 
-                                className="absolute inset-0 bg-cover bg-center blur-sm" 
+                                className="absolute inset-0 bg-cover bg-center" 
                                 style={{ backgroundImage: `url(${uploadedImage || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop'})` }}
                               />
                               <div className="absolute bottom-0 w-full bg-black/60 backdrop-blur text-white text-[8px] font-mono text-center py-1">MATRIZ ORIGEM</div>
@@ -432,8 +359,8 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                           <div className="col-span-1">
                             <div className="w-full aspect-square bg-zinc-200 border border-zinc-300 relative">
                               <div 
-                                className="absolute inset-0 bg-cover bg-center filter grayscale blur-[2px]" 
-                                style={{ backgroundImage: `url(${uploadedImage || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop'})` }}
+                                className="absolute inset-0 bg-cover bg-center" 
+                                style={{ backgroundImage: `url('/ai-threat.jpg')` }}
                               />
                               <div className="absolute bottom-0 w-full bg-rose-600/80 backdrop-blur text-white text-[8px] font-mono text-center py-1">VETOR ADULTERADO</div>
                             </div>
@@ -441,39 +368,17 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                         </div>
 
                         <div className="grid grid-cols-2 gap-4 border-t border-zinc-200 pt-4">
-                          <p className="text-[10px] text-zinc-700 font-mono"><strong>URL LOCALIZADA:</strong> https://x.com/status/921... [OCULTADO]</p>
-                          <p className="text-[10px] text-zinc-700 font-mono"><strong>IP RESOLVIDO:</strong> 104.244.42.1</p>
-                          <p className="text-[10px] text-zinc-700 font-mono"><strong>CONF. INTELIGÊNCIA ARTIFICIAL:</strong> 99.9%</p>
-                          <p className="text-[10px] text-zinc-700 font-mono"><strong>SIMILARIDADE FACIAL:</strong> 98.4%</p>
-                          <p className="text-[10px] text-zinc-700 font-mono col-span-2"><strong>ARTEFATO DETECTADO:</strong> Alteração de matriz labial (Wav2Lip) e transferência de face total (SimSwap / GANs).</p>
+                          <p className="text-[10px] text-zinc-700 font-mono"><strong>URL LOCALIZADA:</strong> https://anonforum-leak.su/thread/db_leak/threads/view?id=482910</p>
+                          <p className="text-[10px] text-zinc-700 font-mono"><strong>IP RESOLVIDO:</strong> 185.112.145.8</p>
+                          <p className="text-[10px] text-zinc-700 font-mono"><strong>CONF. INTELIGÊNCIA ARTIFICIAL:</strong> 94.1%</p>
+                          <p className="text-[10px] text-zinc-700 font-mono"><strong>SIMILARIDADE FACIAL:</strong> {sim2}%</p>
+                          <p className="text-[10px] text-zinc-700 font-mono col-span-2"><strong>ARTEFATO DETECTADO:</strong> Imagem base completamente gerada por difusão (Stable Diffusion v1.5) para fraude de identidade.</p>
                         </div>
                       </div>
 
                     </div>
 
-                    <div className="mt-auto pt-6 flex justify-between items-end border-t-2 border-black">
-                      <div className="flex items-center gap-6">
-                        <div className="w-24 h-24 border-2 border-black flex items-center justify-center p-1 relative">
-                           {/* Simulate QR Code */}
-                           <div className="w-full h-full bg-[linear-gradient(45deg,#000_25%,transparent_25%,transparent_75%,#000_75%,#000),linear-gradient(45deg,#000_25%,transparent_25%,transparent_75%,#000_75%,#000)] bg-[size:10px_10px] bg-[position:0_0,5px_5px] opacity-80" />
-                           <div className="absolute inset-2 bg-white flex items-center justify-center border-2 border-black">
-                             <ShieldCheck className="w-6 h-6" />
-                           </div>
-                        </div>
-                        <div className="text-[10px] font-mono text-zinc-800 leading-relaxed">
-                          <strong>DOCUMENTO ASSINADO DIGITALMENTE</strong><br/>
-                          Autoridade Certificadora ICP-Brasil<br/>
-                          Chave Pública: 0x89A...2F1<br/>
-                          Integridade validada por carimbo de tempo.<br/>
-                          <span className="text-cyan-700 font-bold mt-1 inline-block">VERIFICÁVEL VIA QR CODE</span>
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="w-56 border-b border-black mb-3 inline-block"></div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-black">Sistema de Análise Automatizado</p>
-                        <p className="text-[9px] text-zinc-500 font-mono mt-1">SISTEMA ENCONTRAI</p>
-                      </div>
-                    </div>
+
 
                   </div>
                 </div>

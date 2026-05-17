@@ -43,7 +43,6 @@ export default function Layout({ children }) {
           
           <nav className="hidden md:flex items-center gap-8">
             <Link to="/plataforma" className="text-[13px] font-medium text-zinc-400 hover:text-white transition-colors">Plataforma</Link>
-            <Link to="/juridico" className="text-[13px] font-medium text-zinc-400 hover:text-white transition-colors">Uso Jurídico</Link>
             <Link to="/privacidade" className="text-[13px] font-medium text-zinc-400 hover:text-white transition-colors">Privacidade Zero-Knowledge</Link>
             <Link to="/planos" className="text-[13px] font-medium text-zinc-400 hover:text-white transition-colors">Planos</Link>
           </nav>
