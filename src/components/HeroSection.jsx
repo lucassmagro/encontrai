@@ -2,6 +2,111 @@ import { ArrowRight, Fingerprint, Activity, FileCheck, ShieldAlert } from 'lucid
 import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 
+const SpaceBackground = () => {
+  const stars = Array.from({ length: 800 }).map((_, i) => ({
+    id: i,
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    size: Math.random() * 2 + 0.5,
+    duration: Math.random() * 5 + 3,
+    delay: Math.random() * 2,
+    opacity: Math.random() * 0.5 + 0.1
+  }));
+
+  const comets = Array.from({ length: 6 }).map((_, i) => ({
+    id: `comet-${i}`,
+    top: `${Math.random() * 60}%`, // Start higher up
+    left: `-${Math.random() * 20 + 10}%`, // Start off-screen to the left
+    duration: Math.random() * 1.5 + 1.5, // Fast passing
+    delay: Math.random() * 15 + i * 4, // Spread out over time
+  }));
+
+  const glows = Array.from({ length: 4 }).map((_, i) => ({
+    id: `glow-${i}`,
+    top: `${Math.random() * 80 + 10}%`,
+    left: `${Math.random() * 80 + 10}%`,
+    size: Math.random() * 300 + 200,
+    duration: Math.random() * 15 + 10,
+    delay: Math.random() * 5,
+  }));
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      {/* Glows / Nebulas */}
+      {glows.map((glow, i) => (
+        <motion.div
+          key={glow.id}
+          className={`absolute rounded-full mix-blend-screen blur-[100px] ${i % 2 === 0 ? 'bg-cyan-500/20' : 'bg-blue-500/20'}`}
+          style={{
+            top: glow.top,
+            left: glow.left,
+            width: glow.size,
+            height: glow.size,
+            transform: 'translate(-50%, -50%)'
+          }}
+          animate={{
+            x: [0, 50, 0, -50, 0],
+            y: [0, -50, 0, 50, 0],
+            opacity: [0.5, 0.8, 0.5],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: glow.duration,
+            repeat: Infinity,
+            delay: glow.delay,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+
+      {/* Background Stars */}
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          className="absolute rounded-full bg-white"
+          style={{
+            top: star.top,
+            left: star.left,
+            width: star.size,
+            height: star.size,
+          }}
+          animate={{
+            opacity: [star.opacity * 0.2, star.opacity, star.opacity * 0.2],
+            y: [0, -40, 0],
+          }}
+          transition={{
+            duration: star.duration * 3,
+            repeat: Infinity,
+            delay: star.delay,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+
+      {/* Comets / Shooting Stars */}
+      {comets.map((comet) => (
+        <motion.div
+          key={comet.id}
+          className="absolute w-[200px] h-[1px] bg-gradient-to-r from-transparent via-cyan-300 to-white rotate-[35deg]"
+          style={{ top: comet.top, left: comet.left }}
+          animate={{
+            x: ['0vw', '120vw'],
+            y: ['0vh', '80vh'],
+            opacity: [0, 1, 0]
+          }}
+          transition={{
+            duration: comet.duration,
+            repeat: Infinity,
+            repeatDelay: Math.random() * 10 + 5, // Random wait before next comet
+            delay: comet.delay,
+            ease: "linear"
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function HeroSection({ onStart }) {
   const navigate = useNavigate();
 
@@ -15,9 +120,12 @@ export default function HeroSection({ onStart }) {
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center px-6 py-24 relative overflow-hidden">
+    <div className="w-full flex flex-col justify-center items-center px-6 min-h-[calc(100vh-80px)] relative overflow-hidden">
+      {/* Space Background */}
+      <SpaceBackground />
+      
       {/* Premium Depth Layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(6,182,212,0.03)_0%,transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.02)_0%,transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(6,182,212,0.03)_0%,transparent_50%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.02)_0%,transparent_50%)] pointer-events-none z-0" />
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
         
@@ -31,7 +139,7 @@ export default function HeroSection({ onStart }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-60"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
             </span>
-            <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-widest">Motor Forense v2.4</span>
+            <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-widest">Motor de Inteligência v2.4</span>
           </motion.div>
 
           <motion.h1 
@@ -39,14 +147,14 @@ export default function HeroSection({ onStart }) {
             className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[1.05] mb-6"
           >
             Proteção avançada <br className="hidden md:block"/>
-            da sua <span className="text-white">identidade</span>.
+            da sua <span className="text-blue-500 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]">identidade</span>.
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-lg text-zinc-400 mb-12 max-w-lg leading-relaxed font-light"
           >
-            Detecte usos indevidos da sua imagem, deepfakes e perfis sintéticos. Um laboratório forense digital que emite relatórios para proteção jurídica e extrajudicial.
+            Detecte usos indevidos da sua imagem, deepfakes e perfis sintéticos. Uma plataforma de inteligência que emite relatórios para sua proteção.
           </motion.p>
 
           <motion.div 
@@ -67,24 +175,7 @@ export default function HeroSection({ onStart }) {
             </Link>
           </motion.div>
 
-          {/* Metrics - Elegant */}
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.6 }}
-            className="mt-20 grid grid-cols-3 gap-8 w-full"
-          >
-            <div className="border-l border-white/10 pl-4">
-              <p className="text-3xl font-semibold text-white tracking-tight mb-1">+12K</p>
-              <p className="text-[11px] text-zinc-500 font-medium uppercase tracking-widest">Análises</p>
-            </div>
-            <div className="border-l border-white/10 pl-4">
-              <p className="text-3xl font-semibold text-white tracking-tight mb-1">99.8%</p>
-              <p className="text-[11px] text-zinc-500 font-medium uppercase tracking-widest">Precisão</p>
-            </div>
-            <div className="border-l border-white/10 pl-4">
-              <p className="text-3xl font-semibold text-white tracking-tight mb-1">Zero</p>
-              <p className="text-[11px] text-zinc-500 font-medium uppercase tracking-widest">Retenção</p>
-            </div>
-          </motion.div>
+
         </div>
 
         {/* Right Content - Sophisticated Mockup */}
@@ -92,7 +183,7 @@ export default function HeroSection({ onStart }) {
           initial={{ opacity: 0, scale: 0.95 }} 
           animate={{ opacity: 1, scale: 1 }} 
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full aspect-square flex justify-center items-center perspective-1000"
+          className="relative w-full flex justify-center items-center perspective-1000"
         >
           {/* Subtle backglow */}
           <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent rounded-full blur-[100px]" />

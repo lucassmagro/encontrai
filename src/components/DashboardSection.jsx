@@ -75,7 +75,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
           <motion.div variants={itemVars} className="lg:col-span-12 flex items-end justify-between border-b border-white/[0.04] pb-4 mb-4">
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-white mb-1">Intelligence Center</h1>
-              <p className="text-sm text-zinc-500 font-medium">Relatório Técnico Pericial de Identidade Digital</p>
+              <p className="text-sm text-zinc-500 font-medium">Relatório Técnico de Identidade Digital</p>
             </div>
             <div className="text-right font-mono text-[10px] text-zinc-600 uppercase tracking-widest hidden md:block">
               <p>ID_SESSÃO: 0x{Math.random().toString(16).substring(2, 10).toUpperCase()}</p>
@@ -132,8 +132,8 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                   </h2>
                   <p className="text-zinc-400 leading-relaxed text-sm max-w-lg mb-6">
                     {showSafeState 
-                      ? 'Nossos algoritmos forenses realizaram varreduras em 42 bancos de dados de IA generativa, redes sociais e fóruns indexados. Não foram encontradas instâncias de adulteração ou deepfakes contendo sua biometria facial.'
-                      : `Nossa inteligência artificial detectou anomalias sintéticas utilizando sua biometria facial. As evidências cruzaram o limiar forense e estão prontas para instrução jurídica.`}
+                      ? 'Nossos algoritmos avançados realizaram varreduras em 42 bancos de dados de IA generativa, redes sociais e fóruns indexados. Não foram encontradas instâncias de adulteração ou deepfakes contendo sua biometria facial.'
+                      : `Nossa inteligência artificial detectou anomalias sintéticas utilizando sua biometria facial. As evidências cruzaram o limiar de detecção e estão prontas para instrução jurídica.`}
                   </p>
                 </div>
               </div>
@@ -280,7 +280,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
             </motion.div>
           </div>
 
-          {/* Right Column: Forensic Side Panel */}
+          {/* Right Column: Side Panel */}
           <motion.div variants={itemVars} className="lg:col-span-4 flex flex-col gap-6 h-full">
             
             {/* Export Card */}
@@ -298,7 +298,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                   className="w-full relative group inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-black text-sm font-semibold rounded-lg hover:bg-zinc-200 transition-all overflow-hidden"
                 >
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-                  Gerar Laudo Forense PDF
+                  Gerar Relatório PDF
                 </button>
               </div>
             )}
@@ -372,7 +372,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                     {/* Header */}
                     <div className="border-b-2 border-black pb-8 mb-10 flex justify-between items-end">
                       <div>
-                        <h1 className="text-4xl font-bold tracking-tighter text-black uppercase">Laudo Técnico Pericial</h1>
+                        <h1 className="text-4xl font-bold tracking-tighter text-black uppercase">Laudo Técnico</h1>
                         <p className="text-sm text-zinc-500 font-mono mt-2 tracking-widest">Nº ENCONTRAI-BR-8921-X / {new Date().getFullYear()}</p>
                       </div>
                       <div className="flex flex-col items-end">
@@ -401,7 +401,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                       </div>
                     </div>
 
-                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 border-b border-zinc-200 pb-2">1. Objeto da Perícia e Escopo</h2>
+                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 border-b border-zinc-200 pb-2">1. Objeto da Análise e Escopo</h2>
                     <p className="text-xs text-zinc-800 leading-loose mb-10 text-justify">
                       O presente laudo documenta a constatação técnica e materialização de evidências digitais referentes à extração de características biométricas faciais. O escopo abrange a detecção automatizada de conteúdos sintéticos, adulterações mediante inteligência artificial (Deepfakes) e criações não autorizadas de perfis digitais em plataformas de terceiros. A cadeia de custódia foi preservada mediante criptografia assimétrica de ponta-a-ponta, operando estritamente em ambiente de memória volátil (RAM).
                     </p>
@@ -470,8 +470,8 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                       </div>
                       <div className="text-center">
                         <div className="w-56 border-b border-black mb-3 inline-block"></div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-black">Perito Digital Automatizado</p>
-                        <p className="text-[9px] text-zinc-500 font-mono mt-1">SISTEMA ENCONTRAI FORENSICS</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-black">Sistema de Análise Automatizado</p>
+                        <p className="text-[9px] text-zinc-500 font-mono mt-1">SISTEMA ENCONTRAI</p>
                       </div>
                     </div>
 

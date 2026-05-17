@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Activity, ShieldCheck, Database, Fingerprint } from 'lucide-react';
 
-export default function Platform({ title = "Nossa Arquitetura", subtitle = "Tecnologia de Inteligência Forense e Detecção Sintética" }) {
+export default function Platform({ title = "Nossa Arquitetura", subtitle = "Tecnologia de Inteligência e Detecção Sintética" }) {
   const pageVariants = {
     initial: { opacity: 0, filter: "blur(12px)", scale: 0.98 },
     enter: { opacity: 1, filter: "blur(0px)", scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },

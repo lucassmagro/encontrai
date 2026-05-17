@@ -24,7 +24,7 @@ export default function Legal() {
           Admissibilidade Legal
         </motion.h1>
         <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-lg text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-          Nossos laudos periciais são assinados e desenhados especificamente para instrução probatória em medidas extrajudiciais ou litígios judiciais no Brasil e exterior.
+          Nossos relatórios são gerados e desenhados especificamente para proteção e instrução extrajudicial e judicial no Brasil e exterior.
         </motion.p>
       </div>
 

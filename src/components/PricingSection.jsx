@@ -6,7 +6,7 @@ export default function PricingSection({ onSelect }) {
     <div className="w-full max-w-5xl mx-auto px-6 pb-32 pt-10">
       <div className="text-center mb-16">
          <h2 className="text-3xl font-bold tracking-tight text-white mb-3">Modelos de Proteção</h2>
-         <p className="text-zinc-500 text-sm">Acesso a nível pericial para uso individual ou forense constante.</p>
+         <p className="text-zinc-500 text-sm">Acesso avançado para proteção constante.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -32,7 +32,7 @@ export default function PricingSection({ onSelect }) {
                <Check className="w-4 h-4 text-cyan-500 shrink-0" /> Varredura Completa (128 pontos faciais)
             </li>
             <li className="flex items-center gap-3 text-sm text-zinc-300">
-               <Check className="w-4 h-4 text-cyan-500 shrink-0" /> Geração de Laudo PDF Pericial
+               <Check className="w-4 h-4 text-cyan-500 shrink-0" /> Geração de Relatório em PDF
             </li>
             <li className="flex items-center gap-3 text-sm text-zinc-300">
                <Check className="w-4 h-4 text-cyan-500 shrink-0" /> Assinatura Criptográfica SHA-256

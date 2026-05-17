@@ -16,7 +16,7 @@ export default function ProcessingSection({ onComplete, imageFile }) {
     { id: 4, text: `Executando modelo CNN contra artefatos sintéticos. Tensor_ID: 0x${generateHash()}`, delay: 5200, icon: Server },
     { id: 5, text: `Classificando anomalias. Threshold: >98.0%...`, delay: 7000, icon: Activity },
     { id: 6, text: `Consolidando cadeia de custódia (SHA-256)`, delay: 8800, icon: Fingerprint },
-    { id: 7, text: `Instrução pericial concluída com sucesso.`, delay: 10000, icon: CheckCircle, highlight: true }
+    { id: 7, text: `Instrução concluída com sucesso.`, delay: 10000, icon: CheckCircle, highlight: true }
   ];
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export default function ProcessingSection({ onComplete, imageFile }) {
         {/* Right: Technical Terminal Logs & Progress */}
         <div className="flex flex-col h-full justify-center">
           <div className="mb-10">
-            <h3 className="text-2xl font-bold tracking-tight text-white mb-2">Motor Forense Ativo</h3>
+            <h3 className="text-2xl font-bold tracking-tight text-white mb-2">Motor de Busca Ativo</h3>
             <p className="text-sm text-zinc-400 leading-relaxed">Mapeando vetores biométricos contra as principais redes e modelos sintéticos globais.</p>
           </div>
           

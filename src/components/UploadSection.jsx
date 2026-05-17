@@ -133,7 +133,7 @@ export default function UploadSection({ onUpload }) {
                 <div className="flex items-start gap-4 p-5 rounded-xl bg-cyan-950/10 border border-cyan-900/20 mb-6">
                   <Shield className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-[13px] font-semibold text-cyan-100 tracking-tight">Privacidade Forense Garantida</h4>
+                    <h4 className="text-[13px] font-semibold text-cyan-100 tracking-tight">Privacidade Total Garantida</h4>
                     <p className="text-[11px] text-cyan-200/60 mt-1.5 leading-relaxed font-light">
                       A extração dos vetores é realizada em memória volátil (RAM). Não armazenamos a imagem base em nenhum disco persistente.
                     </p>

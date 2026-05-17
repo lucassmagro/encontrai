@@ -92,7 +92,7 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3 text-zinc-500 text-[13px]">
             <FaceShieldLogo className="w-4 h-4" />
-            <span>&copy; {new Date().getFullYear()} EncontrAI Forensics. Proteção de Identidade Digital.</span>
+            <span>&copy; {new Date().getFullYear()} EncontrAI. Proteção de Identidade Digital.</span>
           </div>
           <div className="flex gap-8 text-[13px] text-zinc-500 font-medium">
             <Link to="/termos" className="hover:text-zinc-300 transition-colors">Termos de Serviço</Link>
