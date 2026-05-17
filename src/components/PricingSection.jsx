@@ -80,7 +80,7 @@ export default function PricingSection({ onSelect }) {
                <ShieldAlert className="w-4 h-4 text-cyan-400 shrink-0" /> Alertas em Tempo Real (Email/SMS)
             </li>
             <li className="flex items-center gap-3 text-sm text-zinc-300">
-               <Check className="w-4 h-4 text-cyan-400 shrink-0" /> Geração Ilimitada de Laudos PDF
+               <Check className="w-4 h-4 text-cyan-400 shrink-0" /> Geração Ilimitada de Relatórios PDF
             </li>
             <li className="flex items-center gap-3 text-sm text-zinc-300">
                <Check className="w-4 h-4 text-cyan-400 shrink-0" /> Descarte de Retenção Dinâmico

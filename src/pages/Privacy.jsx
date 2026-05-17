@@ -35,7 +35,7 @@ export default function Privacy() {
           <ServerOff className="w-6 h-6 text-emerald-400 mb-6" />
           <h3 className="text-lg font-semibold text-white mb-3">Memória Volátil (RAM-Only)</h3>
           <p className="text-[13px] text-zinc-400 leading-relaxed font-light">
-            Quando você faz o upload da imagem, ela é mantida exclusivamente na RAM de nossos nós computacionais. O algoritmo extrai os tensores faciais, executa a busca vetorial cruzada nas subredes, gera o laudo e encerra o processo, destruindo ativamente o contêiner de processamento.
+            Quando você faz o upload da imagem, ela é mantida exclusivamente na RAM de nossos nós computacionais. O algoritmo extrai os tensores faciais, executa a busca vetorial cruzada nas subredes, gera o relatório e encerra o processo, destruindo ativamente o contêiner de processamento.
           </p>
         </div>
 

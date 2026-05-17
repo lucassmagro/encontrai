@@ -291,7 +291,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
                   Custódia Legal
                 </h3>
                 <p className="text-xs text-zinc-500 mb-6 leading-relaxed">
-                  Este laudo é selado com assinatura criptográfica assimétrica. O relatório PDF contém carimbo de tempo válido (Timestamp Authority) para instrução probatória em medidas extrajudiciais ou litígios judiciais.
+                  Este relatório é selado com assinatura criptográfica assimétrica. O PDF contém carimbo de tempo válido (Timestamp Authority) para instrução probatória em medidas extrajudiciais ou litígios judiciais.
                 </p>
                 <button 
                   onClick={() => setShowPdfMockup(true)}
@@ -360,63 +360,63 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
 
               <div className="flex-1 overflow-y-auto print-container">
                 {/* PDF Page Container (A4 aspect ratio approximate logic) */}
-                <div className="bg-white min-h-[1100px] w-full mx-auto relative shadow-sm">
+                <div className="bg-white w-full mx-auto relative shadow-sm" style={{ minHeight: '297mm', maxHeight: '297mm', overflow: 'hidden' }}>
                   
                   {/* Official Watermark */}
                   <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.02] z-0 overflow-hidden">
                     <ShieldCheck className="w-[800px] h-[800px] text-black transform -rotate-12" />
                   </div>
 
-                  <div className="relative z-10 px-16 py-20 flex flex-col h-full">
+                  <div className="relative z-10 px-12 py-10 flex flex-col" style={{ maxHeight: '297mm', overflow: 'hidden' }}>
                     
                     {/* Header */}
-                    <div className="border-b-2 border-black pb-8 mb-10 flex justify-between items-end">
+                    <div className="border-b-2 border-black pb-4 mb-6 flex justify-between items-end">
                       <div>
-                        <h1 className="text-4xl font-bold tracking-tighter text-black uppercase">Laudo Técnico</h1>
-                        <p className="text-sm text-zinc-500 font-mono mt-2 tracking-widest">Nº ENCONTRAI-BR-8921-X / {new Date().getFullYear()}</p>
+                        <h1 className="text-3xl font-bold tracking-tighter text-black uppercase">Relatório Técnico</h1>
+                        <p className="text-xs text-zinc-500 font-mono mt-1 tracking-widest">Nº ENCONTRAI-BR-8921-X / {new Date().getFullYear()}</p>
                       </div>
                       <div className="flex flex-col items-end">
-                        <ShieldCheck className="w-12 h-12 text-black mb-2" />
-                        <span className="text-[10px] uppercase tracking-[0.2em] font-bold">EncontrAI Intelligence</span>
+                        <ShieldCheck className="w-10 h-10 text-black mb-1" />
+                        <span className="text-[9px] uppercase tracking-[0.2em] font-bold">EncontrAI Intelligence</span>
                       </div>
                     </div>
                     
                     {/* Meta Data Table */}
-                    <div className="mb-12 font-mono text-[10px] leading-relaxed text-zinc-800 grid grid-cols-2 bg-zinc-50 border border-zinc-300">
-                      <div className="p-4 border-r border-b border-zinc-300">
-                        <strong className="text-black uppercase tracking-widest block mb-1">Carimbo de Tempo (UTC)</strong>
+                    <div className="mb-6 font-mono text-[9px] leading-relaxed text-zinc-800 grid grid-cols-2 bg-zinc-50 border border-zinc-300">
+                      <div className="p-2.5 border-r border-b border-zinc-300">
+                        <strong className="text-black uppercase tracking-widest block mb-0.5">Carimbo de Tempo (UTC)</strong>
                         {new Date().toUTCString()}
                       </div>
-                      <div className="p-4 border-b border-zinc-300">
-                        <strong className="text-black uppercase tracking-widest block mb-1">Metodologia / Motor IA</strong>
+                      <div className="p-2.5 border-b border-zinc-300">
+                        <strong className="text-black uppercase tracking-widest block mb-0.5">Metodologia / Motor IA</strong>
                         CNN-V2.4 / Reverse Image Tracking
                       </div>
-                      <div className="col-span-2 p-4 bg-zinc-100 border-b border-zinc-300">
-                        <strong className="text-black uppercase tracking-widest block mb-1">Hash de Integridade da Matriz (SHA-256)</strong>
-                        <span className="text-xs">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+                      <div className="col-span-2 p-2.5 bg-zinc-100 border-b border-zinc-300">
+                        <strong className="text-black uppercase tracking-widest block mb-0.5">Hash de Integridade da Matriz (SHA-256)</strong>
+                        <span className="text-[9px]">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
                       </div>
-                      <div className="col-span-2 p-4 text-rose-700 bg-rose-50">
-                        <strong className="text-rose-900 uppercase tracking-widest block mb-1">Classificação de Risco (Severidade)</strong>
+                      <div className="col-span-2 p-2.5 text-rose-700 bg-rose-50">
+                        <strong className="text-rose-900 uppercase tracking-widest block mb-0.5">Classificação de Risco (Severidade)</strong>
                         NÍVEL 4 (CRÍTICO) - Constatação de material sintético difamatório e manipulação biométrica.
                       </div>
                     </div>
 
-                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 border-b border-zinc-200 pb-2">1. Objeto da Análise e Escopo</h2>
-                    <p className="text-xs text-zinc-800 leading-loose mb-10 text-justify">
-                      O presente laudo documenta a constatação técnica e materialização de evidências digitais referentes à extração de características biométricas faciais. O escopo abrange a detecção automatizada de conteúdos sintéticos, adulterações mediante inteligência artificial (Deepfakes) e criações não autorizadas de perfis digitais em plataformas de terceiros. A cadeia de custódia foi preservada mediante criptografia assimétrica de ponta-a-ponta, operando estritamente em ambiente de memória volátil (RAM).
+                    <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 border-b border-zinc-200 pb-1">1. Objeto da Análise e Escopo</h2>
+                    <p className="text-[10px] text-zinc-800 leading-relaxed mb-6 text-justify">
+                      O presente relatório documenta a constatação técnica e materialização de evidências digitais referentes à extração de características biométricas faciais. O escopo abrange a detecção automatizada de conteúdos sintéticos, adulterações mediante inteligência artificial (Deepfakes) e criações não autorizadas de perfis digitais em plataformas de terceiros. A cadeia de custódia foi preservada mediante criptografia assimétrica de ponta-a-ponta, operando estritamente em ambiente de memória volátil (RAM).
                     </p>
 
-                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] mb-4 border-b border-zinc-200 pb-2">2. Cadeia de Custódia e Constatações Técnicas</h2>
-                    <div className="space-y-6 mb-10">
+                    <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 border-b border-zinc-200 pb-1">2. Cadeia de Custódia e Constatações Técnicas</h2>
+                    <div className="space-y-4 mb-6">
                       
                       {/* Evidence Block */}
-                      <div className="p-6 border border-zinc-300 bg-white shadow-sm">
-                        <div className="flex justify-between items-start mb-6">
+                      <div className="p-4 border border-zinc-300 bg-white shadow-sm">
+                        <div className="flex justify-between items-start mb-4">
                           <h3 className="font-bold text-sm tracking-tight">Evidência Material #01 - Vídeo Manipulado (Deepfake)</h3>
                           <span className="px-3 py-1 bg-black text-white text-[9px] uppercase tracking-widest font-bold">Violação Identificada</span>
                         </div>
                         
-                        <div className="grid grid-cols-3 gap-6 mb-6">
+                        <div className="grid grid-cols-3 gap-4 mb-4">
                           <div className="col-span-1">
                             <div className="w-full aspect-square bg-zinc-200 border border-zinc-300 relative">
                               <div 
@@ -451,7 +451,7 @@ export default function DashboardSection({ onReset, uploadedImage, isSafe }) {
 
                     </div>
 
-                    <div className="mt-auto pt-12 flex justify-between items-end border-t-2 border-black">
+                    <div className="mt-auto pt-6 flex justify-between items-end border-t-2 border-black">
                       <div className="flex items-center gap-6">
                         <div className="w-24 h-24 border-2 border-black flex items-center justify-center p-1 relative">
                            {/* Simulate QR Code */}

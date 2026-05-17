@@ -83,20 +83,36 @@
 }
 
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
   body * {
     visibility: hidden;
   }
+
   .print-container, .print-container * {
     visibility: visible;
   }
+
   .print-container {
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
     margin: 0;
     padding: 0;
     box-shadow: none;
-    overflow: visible;
+    overflow: hidden;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-container > * {
+    max-height: 297mm;
+    overflow: hidden;
   }
 }

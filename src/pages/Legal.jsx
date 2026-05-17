@@ -38,7 +38,7 @@ export default function Legal() {
         <div className="glass-panel-deep p-10 rounded-2xl border border-white/[0.04]">
           <Landmark className="w-6 h-6 text-zinc-300 mb-6" />
           <h3 className="text-lg font-semibold text-white mb-3">Takedowns e Notificações (Extrajudicial)</h3>
-          <p className="text-[13px] text-zinc-400 leading-relaxed font-light">Emita laudos precisos contendo IP, Hash e percentual de detecção algorítmica para embasar notificações extrajudiciais diretas aos provedores (provedores de aplicação de internet, como prevê o Marco Civil da Internet), forçando a derrubada de conteúdo fraudulento sem a necessidade de judicialização prévia.</p>
+          <p className="text-[13px] text-zinc-400 leading-relaxed font-light">Emita relatórios precisos contendo IP, Hash e percentual de detecção algorítmica para embasar notificações extrajudiciais diretas aos provedores (provedores de aplicação de internet, como prevê o Marco Civil da Internet), forçando a derrubada de conteúdo fraudulento sem a necessidade de judicialização prévia.</p>
         </div>
       </div>
     </motion.div>
